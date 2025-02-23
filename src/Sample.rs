@@ -1,4 +1,30 @@
 #[derive(Debug)]
+struct Rect{
+    height: u32, 
+    width: u32
+}
+
+impl Rect {
+    fn new(height: u32, width: u32)-> Self{
+        Self { height, width }
+    }
+
+    fn area(&self) -> u32{
+        self.height * self.width
+    }
+}
+
+pub fn main2(){
+    let rect1 = Rect::new(5, 7);
+    println!(
+        "The rectange we given is {:?} and the area is {:?}", 
+        &rect1, 
+        rect1.area()
+    );
+}
+
+
+#[derive(Debug)]
 enum MainChoice {
     MainMenu,
     Start,
@@ -18,7 +44,7 @@ fn print_choice(choice: &MainChoice){
     println!("choice = {:?}", choice);
 }
 
-fn main(){
+pub fn main(){
     let choice: MainChoice = MainChoice::MainMenu;
     print_choice(&choice);
 

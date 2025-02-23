@@ -26,13 +26,12 @@ Input: nums = [3,3], target = 6
 Output: [0,1]
 
 */
-use std::collection::Hash;
 
-pub fn Solution1(nums: Vec<i32>, target: i32) -> Vec<i32> {
+fn solution1(nums: &Vec<i32>, target: &i32) -> Vec<i32> {
     let n = nums.len();
     for i in 0..n {
         for j in 0..n {
-            if i!= j && nums[i] + nums[j] == target {
+            if i != j && nums[i] + nums[j] == *target {
                 return vec![i as i32, j as i32];
             }
         }
@@ -44,10 +43,30 @@ pub fn Solution1(nums: Vec<i32>, target: i32) -> Vec<i32> {
 /*
 -> Need to implement with Hash table
 */
+use std::collections::HashMap;
 
-pub fn Solution2(nums:Vec<i32>, target: i32) -> Ven<i32>{
-
+fn solution2(nums:Vec<i32>, target: i32) -> Ven<i32>{
+    // need to learn how ot use hashmap
 }
 
 
+
+
+pub fn two_sum() {
+    let input1 = vec![2, 7, 11, 15];
+    let target: i32 = 9;
+    println!(
+        "This is Solution 1 -> Input array {:?}, target is {:?}, result is {:?}",
+        &input1,
+        &target,
+        solution1(&input1, &target)
+    );
+
+    println!(
+        "This is Solution 1 -> Input array {:?}, target is {:?}, result is {:?}",
+        &input1,
+        &target,
+        solution2(&input1, &target)
+    );
+}
 
