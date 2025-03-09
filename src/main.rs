@@ -1,12 +1,11 @@
-// mod two_sum;
-// mod sample;
-
-mod leetcode;
-
+// mod leetcode;
+mod sample;
 
 fn main(){
     println!("Hi Karthik!, What are you doing for today");
-    // two_sum::two_sum();
+    
+    // sample::graph::main();
+    sample::graph::main_2();
 
     // sample::menu::main();
     // let my_rect:sample::rect::Rect = sample::rect::Rect::new(3, 4);
@@ -14,5 +13,18 @@ fn main(){
     // sample::main2();
     // sample::rect::main1();
 
-    leetcode::two_sum();
+    // leetcode 1st question
+    // leetcode::two_sum::main();
+
+    // leetcode 2nd question
+    // leetcode
+
+    // leetcode 217 question
+    // leetcode::contains_duplicate::main();
+
+    // leetcode 266 question
+    // leetcode::missing_number::main();
+
+    // leetcode 448 question
+    // leetcode::find_all_numbers_disappeared_in_an_array::main()
 }

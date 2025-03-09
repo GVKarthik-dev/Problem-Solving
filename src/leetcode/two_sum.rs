@@ -27,7 +27,8 @@ Output: [0,1]
 
 */
 
-async  fn solution1(nums: &Vec<i32>, target: &i32) -> Vec<i32> {
+
+fn solution_1(nums: &Vec<i32>, target: &i32) -> Vec<i32> {
     let n = nums.len();
     for i in 0..n {
         for j in 0..n {
@@ -45,7 +46,7 @@ async  fn solution1(nums: &Vec<i32>, target: &i32) -> Vec<i32> {
 */
 use std::collections::HashMap;
 
-async fn solution2(nums:Vec<i32>, target: i32) -> Vec<i32>{
+fn solution_2(nums: &Vec<i32>, target: &i32) -> Vec<i32>{
     // need to learn how to use hashmap
     let mut val_index = HashMap::new();
     
@@ -55,27 +56,27 @@ async fn solution2(nums:Vec<i32>, target: i32) -> Vec<i32>{
         let complement = target - num;
 
         if let Some(&complement_index) = val_index.get(&complement){
-            vec![complement_index as i32, index as i32]
+            return vec![complement_index as i32, index as i32];
         }
 
         
-        val_index.insert(num, index)
+        val_index.insert(num, index);
 
     }
     vec![]
 }
 
+// use std::time::Instant;
 
 
-#[tokio::main]
-pub async fn two_sum() {
+pub fn main() {
     let input1 = vec![2, 4, 7, 11, 15];
     let target: i32 = 9;
     println!(
         "This is Solution 1 -> Input array {:?}, target is {:?}, result is {:?}",
         &input1,
         &target,
-        solution1(&input1, &target).await()
+        solution_1(&input1, &target)
     );
 
 
@@ -83,7 +84,7 @@ pub async fn two_sum() {
         "This is Solution 2 -> Input array {:?}, target is {:?}, result is {:?}",
         &input1,
         &target,
-        solution2(&input1, &target).await()
+        solution_2(&input1, &target)
     );
 }
 
