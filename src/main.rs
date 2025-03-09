@@ -1,11 +1,13 @@
 // mod leetcode;
-mod sample;
+// mod sample;
 
 fn main(){
     println!("Hi Karthik!, What are you doing for today");
-    
+
+    println!("{:?}", "karthik"[2])
+
     // sample::graph::main();
-    sample::graph::main_2();
+    // sample::graph::main_2();
 
     // sample::menu::main();
     // let my_rect:sample::rect::Rect = sample::rect::Rect::new(3, 4);
@@ -25,6 +27,14 @@ fn main(){
     // leetcode 266 question
     // leetcode::missing_number::main();
 
+    // leetcode 283. Move Zeroes
+    // leetcode::move_zeroes::main()
+
     // leetcode 448 question
     // leetcode::find_all_numbers_disappeared_in_an_array::main()
+
+    // leetcode 977. Squares of a Sorted Array
+    // leetcode::squares_of_sorted_array::main();
+
+
 }

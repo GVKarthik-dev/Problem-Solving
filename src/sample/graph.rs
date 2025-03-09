@@ -1,4 +1,4 @@
-use std::collections::{HashMap, HashSet};
+use std::collections::{HashMap, HashSet, VecDeque};
 
 #[derive(Debug)]
 struct Graph {
@@ -21,7 +21,7 @@ impl Graph {
 
     // Perform a Depth-First Search starting from a given node
     fn dfs(&self, start: i32) {
-        let mut visited = HashSet::new();
+        let mut visited = HashSet::new();  // set()
         self.dfs_helper(start, &mut visited);
     }
 
@@ -43,6 +43,27 @@ impl Graph {
             }
         }
     }
+
+    fn bfs(&self, start: i32) {
+        let mut queue: VecDeque<i32> = VecDeque::new();
+        let mut visited : HashSet<i32> = HashSet::new();
+
+        queue.push_back(start);
+        visited.insert(start);
+
+        while let Some(node) = queue.pop_front(){
+            println!("Visiting node: {}", node);
+
+            if let Some(neighbors) = self.adj_list.get(&node){
+                for &neighbor in neighbors {
+                    if !visited.contains(&neighbor) {
+                        visited.insert(neighbor);
+                        queue.push_back(neighbor);
+                    }
+            }
+        }
+    }
+    }
 }
 
 pub fn main() {
@@ -62,6 +83,9 @@ pub fn main() {
     // Perform DFS starting from node 1
     println!("Starting DFS from node 1:");
     graph.dfs(1);
+
+    println!("Starting BFS from node 1");
+    graph.bfs(1);
 }
 
 
@@ -70,33 +94,42 @@ use std::fmt;
 // Define an enum for the unit types
 #[derive(Debug, PartialEq)]
 enum Unit {
-    Meter,
-    Centimeter,
-    Kilometer,
+    // length
+    M,
+    Cm,
+    Km,
+    // weight
+    // Kg,
+    // G,
+    // Liquids
+    // L,
+    // Ml
+
 }
 
 // A struct to represent a measurement
 struct Measurement {
     value: f64,
     unit: Unit,
+    // result: Unit
 }
 
 impl Measurement {
     // Convert a value from one unit to another
     fn convert_to(&self, target_unit: &Unit) -> Measurement {
         let new_value = match (&self.unit, target_unit) {
-            (Unit::Meter, Unit::Centimeter) => self.value * 100.0,
-            (Unit::Meter, Unit::Kilometer) => self.value / 1000.0,
-            (Unit::Centimeter, Unit::Meter) => self.value / 100.0,
-            (Unit::Centimeter, Unit::Kilometer) => self.value / 100000.0,
-            (Unit::Kilometer, Unit::Meter) => self.value * 1000.0,
-            (Unit::Kilometer, Unit::Centimeter) => self.value * 100000.0,
+            (Unit::M, Unit::Cm) => self.value * 100.0,
+            (Unit::M, Unit::Km) => self.value / 1000.0,
+            (Unit::Cm, Unit::M) => self.value / 100.0,
+            (Unit::Cm, Unit::Km) => self.value / 100000.0,
+            (Unit::Km, Unit::M) => self.value * 1000.0,
+            (Unit::Km, Unit::Cm) => self.value * 100000.0,
             (_, _) => self.value, // If units are the same, return the value unchanged
         };
 
         Measurement {
             value: new_value,
-            unit: target_unit.clone(),
+            unit: target_unit,
         }
     }
 }
@@ -109,36 +142,36 @@ impl fmt::Display for Measurement {
 }
 
 // Implement Clone for Unit so we can clone the unit for conversion
-impl Clone for Unit {
-    fn clone(&self) -> Self {
-        match *self {
-            Unit::Meter => Unit::Meter,
-            Unit::Centimeter => Unit::Centimeter,
-            Unit::Kilometer => Unit::Kilometer,
-        }
-    }
-}
+// impl Clone for Unit {
+//     fn clone(&self) -> Self {
+//         match *self {
+//             Unit::M => Unit::M,
+//             Unit::Cm => Unit::Cm,
+//             Unit::Km => Unit::Km,
+//         }
+//     }
+// }
 
 pub fn main_2() {
     // Create a measurement in meters
     let measurement_in_meters = Measurement {
         value: 5000.0,
-        unit: Unit::Meter,
+        unit: Unit::M,
     };
 
     // Convert to centimeters
-    let measurement_in_centimeters = measurement_in_meters.convert_to(&Unit::Centimeter);
+    let measurement_in_centimeters = measurement_in_meters.convert_to(&Unit::Cm);
     println!("{} is equivalent to {}", measurement_in_meters, measurement_in_centimeters);
 
     // Convert to kilometers
-    let measurement_in_kilometers = measurement_in_meters.convert_to(&Unit::Kilometer);
+    let measurement_in_kilometers = measurement_in_meters.convert_to(&Unit::Km);
     println!("{} is equivalent to {}", measurement_in_meters, measurement_in_kilometers);
 
     // Convert from kilometers to meters
     let measurement_in_kilometers2 = Measurement {
         value: 3.0,
-        unit: Unit::Kilometer,
+        unit: Unit::Km,
     };
-    let measurement_in_meters2 = measurement_in_kilometers2.convert_to(&Unit::Meter);
+    let measurement_in_meters2 = measurement_in_kilometers2.convert_to(&Unit::M);
     println!("{} is equivalent to {}", measurement_in_kilometers2, measurement_in_meters2);
 }
