@@ -3,8 +3,8 @@
 
 fn main(){
     println!("Hi Karthik!, What are you doing for today");
-    let cha:Vec<_> = "karthik".chars()
-    println!("{:?}", cha[2]);
+
+    println!("{:?}", "karthik".chars());
 
     // sample::graph::main();
     // sample::graph::main_2();
