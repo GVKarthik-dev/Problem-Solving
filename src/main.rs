@@ -4,7 +4,7 @@
 fn main(){
     println!("Hi Karthik!, What are you doing for today");
 
-    println!("{:?}", "karthik"[2])
+    println!("{:?}", "karthik".chars()[2]);
 
     // sample::graph::main();
     // sample::graph::main_2();
