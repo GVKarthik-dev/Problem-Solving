@@ -35,21 +35,21 @@ Follow up: Could you minimize the total number of operations done?
 
 */
 
-fn move_zeroes(nums: &mut Vec<i32>){
-    let mut n = nums.len();
-    let mut last_none_zero_index = 0;
+// fn move_zeroes(nums: &mut Vec<i32>){
+//     let mut n = nums.len();
+//     let mut last_none_zero_index = 0;
 
-    for i in 0..n {
-        if nums[i] != 0 {
-            nums.swap(i, last_none_zero_index);
-        }
-        last_none_zero_index += 1;
-    }
-}
+//     for i in 0..n {
+//         if nums[i] != 0 {
+//             nums.swap(i, last_none_zero_index);
+//         }
+//         last_none_zero_index += 1;
+//     }
+// }
 
 
-pub fn main() {
-    let mut input_1 = vec![0, 1, 0, 3, 12];
+// pub fn main() {
+//     let mut input_1 = vec![0, 1, 0, 3, 12];
 
-    println!("The Output is {:?}", move_zeroes(&mut input_1));
-}
+//     println!("The Output is {:?}", move_zeroes(&mut input_1));
+// }
