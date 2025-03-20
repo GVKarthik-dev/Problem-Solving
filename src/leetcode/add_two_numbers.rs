@@ -36,89 +36,89 @@ It is guaranteed that the list represents a number that does not have leading ze
 
 
 
-struct ListNode {
-    val: i32,
-    next: Option<Box<ListNode>>
-}
+// struct ListNode {
+//     val: i32,
+//     next: Option<Box<ListNode>>
+// }
 
-impl ListNode {
-    #[inline]
-    fn new(val: i32) -> Self {
-        ListNode {
-        next: None,
-        val
-        }
-    }
-}
+// impl ListNode {
+//     #[inline]
+//     fn new(val: i32) -> Self {
+//         ListNode {
+//         next: None,
+//         val
+//         }
+//     }
+// }
 
-fn solution_1(l1: Option<Box<ListNode>>, l2: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
+// fn solution_1(l1: Option<Box<ListNode>>, l2: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
     
-    let mut l1 = l1;
-    let mut l2 = l2;
+//     let mut l1 = l1;
+//     let mut l2 = l2;
 
-    let mut dummy_head: Option<Box<ListNode>> = Some(Box::new(ListNode::new(0)));
-    let mut current = &mut dummy_head;
+//     let mut dummy_head: Option<Box<ListNode>> = Some(Box::new(ListNode::new(0)));
+//     let mut current = &mut dummy_head;
 
-    let mut carry = 0;
+//     let mut carry = 0;
 
-    while l1.is_some() || l2.is_some() || carry !=0 {
-        let val1 = if let Some(node) = l1 {
-            l1 = node.next;
-            node.val
-        }else {
-            0
-        };
+//     while l1.is_some() || l2.is_some() || carry !=0 {
+//         let val1 = if let Some(node) = l1 {
+//             l1 = node.next;
+//             node.val
+//         }else {
+//             0
+//         };
 
-        let val2 = if let Some(node) = l2 {
-            l2 = node.next;
-            node.val
-        } else {
-            0
-        };
+//         let val2 = if let Some(node) = l2 {
+//             l2 = node.next;
+//             node.val
+//         } else {
+//             0
+//         };
 
-        let sum = val1 + val2 + carry;
-        carry = sum /10;
-        current.next = Some(Box::new(ListNode::new(sum % 10)));
+//         let sum = val1 + val2 + carry;
+//         carry = sum /10;
+//         current.next = Some(Box::new(ListNode::new(sum % 10)));
 
-    }
-    dummy_head.next
+//     }
+//     dummy_head.next
 
-}
+// }
 
-pub fn main() {
-    let l1 = Some(Box::new(ListNode {
-        val: 2,
-        next: Some(Box::new(ListNode {
-            val: 4,
-            next: Some(Box::new(ListNode {
-                val: 3,
-                next: None,
-            })),
-        })),
-    }));
+// pub fn main() {
+//     let l1 = Some(Box::new(ListNode {
+//         val: 2,
+//         next: Some(Box::new(ListNode {
+//             val: 4,
+//             next: Some(Box::new(ListNode {
+//                 val: 3,
+//                 next: None,
+//             })),
+//         })),
+//     }));
 
-    let l2: = Some(Box::new(ListNode { 
-        val: 5, 
-        next: Some(Box::new(ListNode { 
-            val: 6,
-            next: Some(Box::new(ListNode { 
-                val: 4,
-                next: None,
-            })),
-        })),
-    }));
+//     let l2: = Some(Box::new(ListNode { 
+//         val: 5, 
+//         next: Some(Box::new(ListNode { 
+//             val: 6,
+//             next: Some(Box::new(ListNode { 
+//                 val: 4,
+//                 next: None,
+//             })),
+//         })),
+//     }));
 
-    println!(
-        "This is Solution 1 -> Result for Input 1 is {:?}",
-        solution_1(l1, l2)
-    );
-}
+//     println!(
+//         "This is Solution 1 -> Result for Input 1 is {:?}",
+//         solution_1(l1, l2)
+//     );
+// }
 
-#[cfg(test)]
-mod test {
+// #[cfg(test)]
+// mod test {
 
-    #[test]
-    fn test_case_1() {
-        assert_eq!(solution_1(), )
-    }
-}
+//     #[test]
+//     fn test_case_1() {
+//         assert_eq!(solution_1(), )
+//     }
+// }

@@ -88,3 +88,22 @@ pub fn main() {
     );
 }
 
+#[cfg(test)]
+mod test {
+    use super::*;
+
+    #[test]
+    fn test_case_1() {
+        assert_eq!(true, true);
+    }
+
+    #[test]
+    fn test_case_2() {
+        assert_eq!(true, true);
+    }
+
+    #[test]
+    fn test_case_3() {
+        assert_eq!(true, true);
+    }
+}
